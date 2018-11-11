@@ -1,0 +1,22 @@
+﻿            // *** NEXT BE ABLE TO PASS IN THE MATURITY (strike now working. These are sent as arrays and though I can get that working, the maturity or expiration gets an http 500 from OpenFigi.com
+            // No IDENTIFIER FOUND (SEEMS TO POLICE THE MATURITY DATE PASSED IN BUT THEN NOT FIND IT WHEN THE REQUEST IS ACCEPTABLE: new OpenFIGIRequest("ID_EXCH_SYMBOL", "FMAS").WithExchangeCode("EUX").WithSecurityType2("Future").WithMaturity("2018-01-03","2018-12-31")
+            // NO IDENTIFIER FOUND (MATURITY DATE FORMAT SEEMINLY OK BUT DOESN'T FIND IT): new OpenFIGIRequest("ID_EXCH_SYMBOL", "FMAS").WithExchangeCode("EUX").WithSecurityType2("Future").WithMaturity("2018-12-30","2018-12-31")
+            // WORKS: new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithOptionType("Put").WithStrike(12,12.5).WithSecurityType2("Option")
+            // WORKING FUTURE: new OpenFIGIRequest("ID_EXCH_SYMBOL", "FMAS").WithExchangeCode("EUX").WithSecurityType2("Future")
+			// WORKING LME ZINC: new OpenFIGIRequest("ID_EXCH_SYMBOL", "ZS").WithSecurityType2("Future")
+			// NOTE: LME ZINC TAPO (options) showing as Future
+            // DOESN'T WORK (HTTP500): new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithSecurityType("Equity Option").WithOptionType("Put").WithOptionType("Put").WithStrike(12, 12.5).WithSecurityType2("Option").WithMaturity("2018-01-19", "2018-01-19")
+            // DOESN'T WORK (HTTP500): new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithSecurityType("Equity Option").WithOptionType("Put").WithStrike(12, 12.5).WithSecurityType2("Option").WithExpiration("2018-01-19", "2018-01-19")
+			// DOESN'T WORK - CAN'T JUST SEND LX (the root of the ticker): new OpenFIGIRequest("TICKER", "LX")
+            //new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithSecurityType("Equity Option").WithOptionType("Put").WithOptionType("Put").WithStrike(12, 12.5).WithSecurityType2("Option").WithExpiration("2018-11-16", "2018-11-16")
+            //new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithSecurityType("Equity Option").WithOptionType("Put").WithOptionType("Put"),
+            //new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithSecurityType("Equity Option").WithOptionType("Put").WithMaturity("2018-11-16","2018-11-16")
+            //new OpenFIGIRequest("ID_EXCH_SYMBOL", "SNAP").WithExchangeCode("US").WithMarketSectorDescription("Equity").WithSecurityType("Equity Option").WithOptionType("Put"),
+            //new OpenFIGIRequest("TICKER", "SNAP").WithExchangeCode("US").WithMarketSectorDescription("Equity").WithOptionType("Call")
+            //new OpenFIGIRequest("ID_ISIN", "US4592001014"),
+            //new OpenFIGIRequest("ID_ISIN", "US4592001014"),
+            //new OpenFIGIRequest("ID_BB_GLOBAL", "BBG000BLNNH6")
+			//Next find out the range of LME instrument traded and whether they are just the monthly contracts.
+			//When searching for Alumninium monthly futures on the LME in OpenFigi, look for: LME PRI ALUM FUTR
+			//Consider putting in some kind of warning if an LME Future which is not on a third wednesday is processed as our logic will likely be wrong for any of these.
+			//Get some more example exchanges to see how we handle their instruments. Check the Bloomberg code - e.g. is Eurex always EUX or is it sometimes a Swiss code?

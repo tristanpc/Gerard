@@ -1,0 +1,21 @@
+﻿DONE Design database table to hold local instrument master static (this will be maintained manually with SQL until such time as a webpage is available)
+DONE Design database table to hold list of instruments found to be in an open position or traded yesterday. We will raise a warning if any are not in the master instrument table.
+DONE Design database table to hold list of contracts found to be in an open position or traded yesterday. We will try to fetch them from OpenFigi if they are not in the master product table.
+DONE Design database table to hold local product information retrieved from OpenFigi (or entered manually in an emergency)
+DONE Make a database table to hold copy of retrieved product information where matches could be found for products we didn't previously hold.
+Install Visual Studio 2017 Community Edition on my work computer.
+DONE Find out which instruments we trade the most and test. Compare BBG product-level codes for these instruments plus the BUND, BOBL, LME ZINC, LME Nickel, LME Aluminium and ICE Long gilts already traded.
+--> massively most open positions: LEUR, ED1, LST (biggest three by far) then LGR, TN1, FGBL, CTN, ES, EXUL, MMEM, CTN2. Most traded yesterday: ED1 (massively), SCN, LGR, FTSE
+DONE Test with the most-traded future, an it's option analog
+WON'T DO - Put in an exchange code generator, based on the ins_market value. - not necessary as only needed once, when setting up the instrument.
+DONE - Check if we can actually get what we call the 'BBG Symbol' which we know we need. - WE CAN'T.
+Create a stored procedure for inserting successfully found mappings.
+Make the RANbase SQL to populate the daily list of open position instruments from T-1 data (actually also include any instruments traded yesterday too).
+Make the RANbase SQL to populate the daily list of open position contracts from T-1 data (actually also include any contracts traded yesterday too).
+Make the ARC-SQL to populate the daily open position instruments against top-day data
+Make the ARC-SQL to populate the daily open position contracts from top-day data.
+Make a list of missing products which we have the instrument code for and try to fetch from OpenFigi
+Store any retrieved values and raise alerts for any products we couldn't find. 
+Log those products we do think we successfully found.
+Daily cycle to look for new instruments and raise warning.
+Daily cycle to look for new contracts on already-known instruments and try to fetch Bloomberg codes; raising a warning if it can't be found; emailing confirmation if it is.
